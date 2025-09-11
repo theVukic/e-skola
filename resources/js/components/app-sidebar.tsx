@@ -5,14 +5,34 @@ import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader, SidebarMenu, Sid
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
+import { BookOpen, Folder, LayoutGrid, GraduationCap, Users, Book, ListChecks} from 'lucide-react';
 import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
-        href: dashboard(),
+        title: 'Komandan tabla',
+        href: '/dashboard',
         icon: LayoutGrid,
+    },
+    {
+        title: 'Profesori',
+        href: '/teachers',
+        icon: GraduationCap,
+    },
+    {
+        title: 'Studenti',
+        href: '/students',
+        icon: Users,
+    },
+    {
+        title: 'Kursevi',
+        href: '/courses',
+        icon: Book,
+    },
+    {
+        title: 'Upisi',
+        href: '/enrollments',
+        icon: ListChecks,
     },
 ];
 
