@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\EnrollmentController;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -28,6 +29,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Resource rute za courses
     Route::resource('courses', CourseController::class)
         ->parameters(['courses' => 'id']) 
+        ->only(['index','create','store','edit','update','destroy']);
+    
+    // Resource rute za enrollments
+    Route::resource('enrollments', EnrollmentController::class)
+        ->parameters(['enrollments' => 'id']) 
         ->only(['index','create','store','edit','update','destroy']);
 });
 
