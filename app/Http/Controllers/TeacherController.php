@@ -63,7 +63,6 @@ class TeacherController extends Controller
         return Redirect::route('teachers.index');
     }
 
-    // DELETE /teachers/{id}
     public function destroy($id)
     {
         $teacher = Teacher::where('tenant_id', Auth::user()->tenant_id)->findOrFail($id);

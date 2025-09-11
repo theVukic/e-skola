@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Tenet extends Model
 {
     use HasFactory;
-    public $timestamps = fasle;
+    public $timestamps = false;
     protected $primaryKey = 'tenant_id';
 
     protected $fillable = [
