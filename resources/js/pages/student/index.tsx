@@ -26,7 +26,6 @@ const emptyForm = { first_name: '', last_name: '', grade: '' };
 type FormState = typeof emptyForm & { id?: number };
 
 export default function StudentIndex() {
-  // podrži i čisti niz i paginator
   const { students: raw } = usePage<{ students?: Student[] | Paginated<Student> }>().props;
   const studentList: Student[] = Array.isArray(raw) ? raw : (raw?.data ?? []);
 
@@ -43,7 +42,7 @@ export default function StudentIndex() {
 
   const handleOpenEdit = (student: Student) => {
     setForm({
-      id: student.student_id, // TAČAN ID
+      id: student.student_id,
       first_name: student.first_name,
       last_name: student.last_name,
       grade: String(student.grade),
@@ -67,7 +66,6 @@ export default function StudentIndex() {
     e.preventDefault();
     setSaving(true);
 
-    // šalji samo polja koja backend očekuje
     const payload = {
       first_name: form.first_name,
       last_name: form.last_name,
@@ -78,15 +76,12 @@ export default function StudentIndex() {
       preserveScroll: true,
       onSuccess: () => {
         handleClose();
-        // osvježi listu bez reload cijele stranice
         router.reload({ only: ['students'] });
       },
       onError: () => {
-        // ako padne validacija, ostavi modal otvoren da vidiš greške
         setSaving(false);
       },
       onFinish: () => {
-        // fallback da maknemo loading state
         setSaving(false);
       },
     } as const;

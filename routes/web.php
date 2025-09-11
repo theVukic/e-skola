@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CourseController;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
@@ -22,6 +23,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Resource rute za students
     Route::resource('students', StudentController::class)
         ->parameters(['students' => 'id']) 
+        ->only(['index','create','store','edit','update','destroy']);
+
+    // Resource rute za courses
+    Route::resource('courses', CourseController::class)
+        ->parameters(['courses' => 'id']) 
         ->only(['index','create','store','edit','update','destroy']);
 });
 
