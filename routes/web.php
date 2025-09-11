@@ -6,15 +6,13 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\EnrollmentController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return Inertia::render('welcome');
 })->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
 
     // Resource rute za teachers
     Route::resource('teachers', TeacherController::class)
@@ -35,6 +33,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('enrollments', EnrollmentController::class)
         ->parameters(['enrollments' => 'id']) 
         ->only(['index','create','store','edit','update','destroy']);
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
 require __DIR__.'/settings.php';
