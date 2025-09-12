@@ -39,6 +39,21 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
+                                <Label htmlFor="school_name">School name</Label>
+                                <Input
+                                    id="school_name"
+                                    type="text"
+                                    required
+                                    tabIndex={2}
+                                    autoComplete="organization"
+                                    name="school_name"
+                                    placeholder="e.g. Osnovna škola Branko Ćopić"
+                                />
+                                <InputError message={errors.school_name} className="mt-2" />
+                            </div>
+
+
+                            <div className="grid gap-2">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
                                     id="email"
