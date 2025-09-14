@@ -10,7 +10,7 @@ import AppLogo from './app-logo';
 
 const mainNavItems: NavItem[] = [
     {
-        title: 'Komandan tabla',
+        title: 'Kontrolna tabla',
         href: '/dashboard',
         icon: LayoutGrid,
     },

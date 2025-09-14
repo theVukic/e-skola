@@ -16,7 +16,7 @@ import { edit } from '@/routes/profile';
 
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Profile settings',
+        title: 'Postavke profila',
         href: edit().url,
     },
 ];
@@ -26,11 +26,11 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
 
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
-            <Head title="Profile settings" />
+            <Head title="Postavke profila" />
 
             <SettingsLayout>
                 <div className="space-y-6">
-                    <HeadingSmall title="Profile information" description="Update your name and email address" />
+                    <HeadingSmall title="Profil informacije" description="Promjeni svoje ime i e-mail adresu" />
 
                     <Form
                         {...ProfileController.update.form()}
@@ -42,7 +42,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                         {({ processing, recentlySuccessful, errors }) => (
                             <>
                                 <div className="grid gap-2">
-                                    <Label htmlFor="name">Name</Label>
+                                    <Label htmlFor="name">Ime</Label>
 
                                     <Input
                                         id="name"
@@ -51,14 +51,14 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                                         name="name"
                                         required
                                         autoComplete="name"
-                                        placeholder="Full name"
+                                        placeholder="Ime"
                                     />
 
                                     <InputError className="mt-2" message={errors.name} />
                                 </div>
 
                                 <div className="grid gap-2">
-                                    <Label htmlFor="email">Email address</Label>
+                                    <Label htmlFor="email">E-mail adresa</Label>
 
                                     <Input
                                         id="email"
@@ -68,7 +68,7 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                                         name="email"
                                         required
                                         autoComplete="username"
-                                        placeholder="Email address"
+                                        placeholder="E-mail adresa"
                                     />
 
                                     <InputError className="mt-2" message={errors.email} />
@@ -77,26 +77,26 @@ export default function Profile({ mustVerifyEmail, status }: { mustVerifyEmail: 
                                 {mustVerifyEmail && auth.user.email_verified_at === null && (
                                     <div>
                                         <p className="-mt-4 text-sm text-muted-foreground">
-                                            Your email address is unverified.{' '}
+                                            Tvoja e-mail adresa nije verifikovana.{' '}
                                             <Link
                                                 href={send()}
                                                 as="button"
                                                 className="text-foreground underline decoration-neutral-300 underline-offset-4 transition-colors duration-300 ease-out hover:decoration-current! dark:decoration-neutral-500"
                                             >
-                                                Click here to resend the verification email.
+                                                Klikni ovde da bi ste dobili ponovo link za verifikaciju e-mail adrese.
                                             </Link>
                                         </p>
 
                                         {status === 'verification-link-sent' && (
                                             <div className="mt-2 text-sm font-medium text-green-600">
-                                                A new verification link has been sent to your email address.
+                                                Verifikacioni link je poslat na vašu e-mail adresu.
                                             </div>
                                         )}
                                     </div>
                                 )}
 
                                 <div className="flex items-center gap-4">
-                                    <Button disabled={processing}>Save</Button>
+                                    <Button disabled={processing}>Sačuvaj</Button>
 
                                     <Transition
                                         show={recentlySuccessful}
